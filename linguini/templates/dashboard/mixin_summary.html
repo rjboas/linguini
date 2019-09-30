@@ -1,0 +1,30 @@
+{% if event is defined %}
+    {% set item = event %}
+{% elif notice is defined %}
+    {% set item = notice %}
+{% endif %}
+
+{% if item.pc == 0 or current_user.role != '' or item.pc == current_user.pc %}
+    {% if event is defined %}
+    <a href="{{ url_for('.event_detail', event_id=item.id) }}">
+    {% elif notice is defined %}
+    <a href="{{ url_for('.notice_detail', notice_id=item.id) }}">
+    {% endif %}
+        <h4>{{ item.title }}</h4>
+    </a>
+    <p class="description">{{ item.description|truncate(64) }}</p>
+    {% if item.start_time != none and item.end_time != none%}
+        <p class="datetime-info">
+            From <span class="datetime">{{ item.start_time }}</span> to <span class="datetime">{{ item.end_time}}</span>
+        </p>
+    {% endif %}
+    {% if item.start_time != none and item.end_time == none %}
+        <p class="datetime-info">Start Time: <span class="datetime">{{ item.start_time }}</span></p>
+    {% endif %}
+    {% if item.start_time == none and item.end_time != none %}
+        <p class="datetime-info">End Time: <span class="datetime">{{ item.end_time }}</span></p>
+    {% endif %}
+
+    {% if item.location != none %}<p>Location: <span class="location">{{ item.location }}</span></p>{% endif %}
+    {% if item.attachment_url != none %}<a href="{{ item.attachment_url }}" target="_blank" class="attachment-link">Attachment</a>{% endif %}
+{% endif %}

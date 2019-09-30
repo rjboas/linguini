@@ -1,0 +1,25 @@
+{% if event is defined %}
+    {% set item = event %}
+{% elif notice is defined %}
+    {% set item = notice %}
+{% endif %}
+{% if item.pc == 0 or current_user.role != '' or item.pc == current_user.pc %}
+<h2>{{ item.title }}</h2>
+    <section>
+        <h3>Description</h3>
+        <p>{{ item.description }}</p>
+    </section>
+    <section>
+        <h3>Info</h3>
+        {% if item.start_time is defined and item.start_time is not none%}<p>Start Time: {{ item.start_time }}</p>{% endif %}
+        {% if item.end_time is defined and item.end_time is not none%}<p>End Time: {{ item.end_time }}</p>{% endif %}
+        {% if item.location is defined and item.location is not none%}<p>Location: {{ item.location }}</p>{% endif %}
+        {% if item.attachment_url is defined and item.attachment_url is not none %}
+            <p>Attachment: <a href="{{ item.attachment_url }}" target="_blank" class="detail-attachment-link">{{ item.attachment_url }}</a></p>
+        {% endif %}
+        {% if item.payment_url is defined and item.payment_url is not none %}
+            <p>Pay Here: <a href="{{ item.payment_url }}" target="_blank" class="detail-payment-link">{{ item.payment_url }}</a></p>
+        {% endif %}
+        <p>Created By: {{ item.creator_username }}</p>
+</section>
+{% endif %}

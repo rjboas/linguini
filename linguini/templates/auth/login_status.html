@@ -1,0 +1,13 @@
+{% extends 'auth/base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Login Status - {% if current_user.is_authenticated %}Logged In{% else %}Logged Out{% endif %}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <h3>Current User:</h3>
+    {% if current_user.is_authenticated %}
+        <p>Name: {{current_user.fullname}}</p>
+        <p>Username: {{current_user.username}}</p>
+    {% else %}Not Logged In{% endif %}
+{% endblock %}

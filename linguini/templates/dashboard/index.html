@@ -1,0 +1,12 @@
+{% extends 'dashboard/base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Dashboard{% endblock title %}</h1>
+{% endblock header %}
+
+{% block content %}
+  <div class="content-flex">
+    {% include 'dashboard/notices_content.html' %}    
+    {% include 'dashboard/events_content.html' %}
+  </div>
+{% endblock content %}

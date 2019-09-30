@@ -1,0 +1,52 @@
+{% extends 'auth/base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Create Account{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <fieldset>
+      <legend>Basic User Info</legend>
+      <fieldset class="minor">
+        <label for="username">Username</label>
+        <input name="username" id="username" placeholder="Username" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+      </fieldset>
+      <fieldset class="minor">
+        <label for="first-name">First name</label>
+        <input name="first-name" id="first-name" placeholder="First name" required>
+        <label for="last-name">Last name</label>
+        <input name="last-name" id="last-name" placeholder="Last name" required>
+      </fieldset>
+    </fieldset>
+    <fieldset>
+      <legend>PC and Roles</legend>
+      <fieldset class="minor pc">
+        <label for="pc">PC class</label>
+        <p class="field-info">Any user can see house (PC 0) events/notices. PC class 0 users can only see these events/notices.</p>
+        <!-- <input name="pc" id="pc" type="number" min="0" max="9" placeholder="PC class" required> -->
+        <ul>
+          <label><input type="radio" name="pc" value="1">1</label>
+          <label><input type="radio" name="pc" value="2">2</label>
+          <label><input type="radio" name="pc" value="3">3</label>
+          <label><input type="radio" name="pc" value="4">4</label>
+          <label><input type="radio" name="pc" value="5">5</label>
+          <label><input type="radio" name="pc" value="6">6</label>
+          <label><input type="radio" name="pc" value="7">7</label>
+          <label><input type="radio" name="pc" value="8">8</label>
+          <label><input type="radio" name="pc" value="9">9</label>
+          <label><input type="radio" name="pc" value="0">0</label>
+        </ul>
+      </fieldset>
+      <fieldset class="minor">
+        <label for="role">Role</label>
+        <label><input type="radio" name="role" value="">None - Can view house (PC 0) and user PC class events/notices</label>
+        <label><input type="radio" name="role" value="staff">Staff - Can view, create, update, and delete all events/notices</label>
+        <label><input type="radio" name="role" value="admin">Administrator - Full system administrator (all permissions)</label>
+      </fieldset>
+    </fieldset>
+    <input type="submit" value="Create Account" id="create-user-submit">
+  </form>
+{% endblock %}

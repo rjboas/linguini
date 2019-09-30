@@ -1,0 +1,16 @@
+{% extends 'auth/base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="username">Username</label>
+    <input name="username" id="username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <div><input type="checkbox" name="remember" id="remember-me" value="True"><label for="checkbox">Remember Me</label></div>
+    <input type="submit" value="Log In" {% if current_user.is_authenticated %}disabled{% endif %}>
+  </form>
+{% endblock %}

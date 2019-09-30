@@ -1,0 +1,57 @@
+{% extends 'dashboard/base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Create{% endblock title %}</h1>
+{% endblock header %}
+
+{% block content %}
+<form method="post">
+    <fieldset>
+      <legend>Basic Info</legend>
+      <fieldset class="minor">
+        <label for="title">Title (*)</label>
+        <input name="title" id="title" placeholder="Title" required>
+
+        <div><label for="type">Type (*):</label>
+        <label><input type="radio" name="type" value="notice" required>Notice</label>
+        <label><input type="radio" name="type" value="event" required>Event</label></div>
+        
+        <label for="description">Description (*)</label>
+        <textarea name="description" id="description" placeholder="Description" required></textarea>
+
+        <label for="first-name">Start Time</label>
+        <input type="datetime-local" name="start-time" id="start-time" placeholder="Start time">
+        <label for="last-name">End time</label>
+        <input type="datetime-local" name="end-time" id="end-time" placeholder="End time">
+      </fieldset>
+    </fieldset>
+    <fieldset>
+      <legend>Extra Info</legend>
+      <fieldset class="minor pc">
+        <legend><label for="pc">PC class (*)</label></legend>
+        <p class="field-info">PC class 0 means viewable to all users.</p>
+        <!-- <input name="pc" id="pc" type="number" min="0" max="9" placeholder="PC class" required> -->
+        <ul>
+          <label><input type="radio" name="pc" value="1">1</label>
+          <label><input type="radio" name="pc" value="2">2</label>
+          <label><input type="radio" name="pc" value="3">3</label>
+          <label><input type="radio" name="pc" value="4">4</label>
+          <label><input type="radio" name="pc" value="5">5</label>
+          <label><input type="radio" name="pc" value="6">6</label>
+          <label><input type="radio" name="pc" value="7">7</label>
+          <label><input type="radio" name="pc" value="8">8</label>
+          <label><input type="radio" name="pc" value="9">9</label>
+          <label><input type="radio" name="pc" value="0">0</label>
+        </ul>
+      </fieldset>
+      <fieldset class="minor">
+        <label for="attachment-url">Attachment</label>
+        <input name="attachment-url" id="attachment-url" placeholder="Attachment URL">
+
+        <label for="location">Location</label>
+        <input name="location" id="location" placeholder="Location">
+      </fieldset>
+    </fieldset>
+    <input type="submit" value="Create Account" id="create-user-submit">
+  </form>
+{% endblock content %}

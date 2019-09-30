@@ -1,0 +1,13 @@
+<section class='content-list events'>
+    <h3>Events</h3>
+    {% if events == [] %}
+    <div class="error">No events found.</div>
+    {% endif %}
+    {% for event in events %}
+    {% if event.pc == 0 or current_user.role != '' or event.pc == current_user.pc %}
+    <div class="event">
+        {% include 'dashboard/mixin_summary.html' %}
+    </div>
+    {% endif %}
+    {% endfor %} 
+</section>

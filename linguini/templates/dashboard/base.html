@@ -1,0 +1,36 @@
+<!doctype html>
+
+<head>
+  <title>{% block title %}{% endblock %} - Linguini</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+
+<body>
+  <nav>
+    <h1>Linguini</h1>
+    <h6>Logged in as {{ current_user.fullname }}</h6>
+    <ul>
+      <li><a href="{{ url_for('.index') }}">Dashboard</a>
+      <li><a href="{{ url_for('.notices') }}">Notices</a>
+      <li><a href="{{ url_for('.events') }}">Events</a>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    </ul>
+  </nav>
+  <section class="content">
+    {#
+    <header>
+    {% block header %}{% endblock %}
+    </header>
+    #}
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </section>
+  <script>document.querySelectorAll('.flash').forEach(function (flash) { flash.addEventListener('click', function (e) { this.parentNode.removeChild(this); }); });</script>
+  <footer>
+    <p class="footer-info">Linguini Web App created by rjboas</p>
+  </footer>
+</body>
+
+</html>

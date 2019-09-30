@@ -1,0 +1,9 @@
+{% extends 'dashboard/base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Event - {{ event.title }}{% endblock title %}</h1>
+{% endblock header %}
+
+{% block content %}
+    {% include 'dashboard/mixin_detail.html' %}
+{% endblock content %}

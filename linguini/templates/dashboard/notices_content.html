@@ -1,0 +1,13 @@
+<section class='content-list notices'>
+    <h3>Notices</h3>
+    {% if notices == [] %}
+    <div class="error">No notices found.</div>
+    {% endif %}
+    {% for notice in notices %}
+    {% if notice.pc == 0 or current_user.role != '' or notice.pc == current_user.pc %}
+    <div class="notice">
+        {% include 'dashboard/mixin_summary.html' %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</section>

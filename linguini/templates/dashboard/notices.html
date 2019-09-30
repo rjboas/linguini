@@ -1,0 +1,9 @@
+{% extends 'dashboard/base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Notices{% endblock title %}</h1>
+{% endblock header %}
+
+{% block content %}
+    {% include 'dashboard/notices_content.html' %}
+{% endblock content %}
